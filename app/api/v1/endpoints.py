@@ -7,7 +7,7 @@ from fastapi import Path
 
 from sqlalchemy.orm import Session
 
-from app.database.session import get_db
+from app.database.session import GetDatabase
 from app.services.file_service import SaveMetadataAndEnqueue
 from app.utils.redis_cache import GetStatus
 
@@ -19,7 +19,7 @@ router = APIRouter()
 async def UploadFile(
     file: UploadFile = File(...),
     description: str = Form(...),
-    db: Session = Depends(det_db)
+    db: Session = Depends(GetDatabase)
 ):
     # await is used within an async function
     # to pause execution until a specified task 
