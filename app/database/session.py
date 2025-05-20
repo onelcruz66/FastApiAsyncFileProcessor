@@ -9,8 +9,8 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://fastapi_user:password@localhost:5432/fastapi_db")
 
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoFlush=False, bind=engine)
+engine = create_engine(DATABASE_URL, echo=True)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Dependency for FastAPI
 def GetDatabase():

@@ -9,3 +9,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 app.include_router(endpoints.router, prefix="/api/v1")
+
+@app.get("/")
+def read_root():
+    return {"status": "ok"}
